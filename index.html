@@ -112,7 +112,7 @@ function detail(i){
   const g=DATA[i];document.title=g.t+"｜"+T;
   const rows=g.s.map(x=>{const [zh,c,en,sp,sit]=x.split("|");
     const u=sp||("https://www.youtube.com/results?search_query="+encodeURIComponent(c+" "+en));
-    return `<li><span class="tx">${sit?`<span class="sit">${sit}</span>`:""}<span class="zh">${zh}</span><span class="en">${c}：${en}</span></span><a class="play" href="${u}" target="_blank" rel="noopener" aria-label="播放 ${zh}">播放</a></li>`}).join("");
+    return `<li><span class="tx">${sit?`<span class="sit">${sit}</span>`:""}<span class="zh">${zh}</span><span class="en">${c}：${en}</span></span><a class="play" href="${u}" aria-label="播放 ${zh}">播放</a></li>`}).join("");
   app.innerHTML=`<div style="--h:${g.h}"><div class="bar"><a class="back" role="button" tabindex="0" data-go="-1"><i></i>目錄</a><span class="run">${T}</span></div><div class="hero"><h2>${g.t}</h2><p>${g.n}　${g.s.length} 首</p></div><ul class="pieces">${rows}</ul></div>`;
 }
 function go(e){const a=e.target.closest("[data-go]");if(!a)return;e.preventDefault();const i=+a.dataset.go;if(i>=0)detail(i);else home();window.scrollTo(0,0)}
